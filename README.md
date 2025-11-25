@@ -25,6 +25,29 @@ A comprehensive AI agent built with LangGraph and Google Gemini API for multi-de
 - LangGraph framework
 - LangChain with Google Generative AI integration
 
+## ⚡ Rate Limiting & Error Handling
+
+The agent includes built-in rate limiting and retry logic to handle API rate limits:
+
+- **Automatic rate limiting**: 2-second delay between API calls (configurable)
+- **Exponential backoff**: Automatic retries with increasing delays on rate limit errors
+- **Error handling**: Graceful handling of `ResourceExhausted` errors
+- **Configurable delays**: Adjust delays via environment variables
+
+### Rate Limiting Configuration
+
+You can configure rate limiting in your `.env` file:
+
+```bash
+# Rate limiting settings (optional)
+RATE_LIMIT_DELAY=2.0          # Delay between API calls (seconds)
+MAX_RETRIES=5                  # Maximum retry attempts
+INITIAL_RETRY_DELAY=5.0        # Initial retry delay (seconds)
+GEMINI_MODEL=gemini-1.5-flash  # Model name (gemini-1.5-flash or gemini-1.5-pro)
+```
+
+**Note**: If you hit rate limits frequently, increase `RATE_LIMIT_DELAY` to 5-10 seconds.
+
 ## 🚀 Quick Setup (GitHub Codespaces)
 
 ### Step 1: Clone/Open Repository in Codespaces
